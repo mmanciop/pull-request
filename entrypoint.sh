@@ -93,6 +93,14 @@ if [[ "$?" != "0" ]]; then
   exit 1
 fi
 
+if [[ "$INPUT_PR_AUTOMERGE" == 'true' ]]; then
+  gh pr merge --auto --merge "$PR_URL"
+  if [[ "$?" != "0" ]]; then
+    echo "Cannot merge Pull Request ${PR_URL} as auto-merge"
+    exit 1
+  fi
+fi
+
 echo ${PR_URL}
 echo "::set-output name=pr_url::${PR_URL}"
 echo "::set-output name=pr_number::${PR_URL##*/}"

@@ -39,6 +39,9 @@ inputs:
   pr_allow_empty:
     description: Create PR even if no changes
     required: false
+  pr_automerge:
+    description: If 'true', set the pull request to merged automatically if all checks pass
+    required: false
   github_token:
     description: GitHub token secret
     required: true
